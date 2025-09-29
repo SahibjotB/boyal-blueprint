@@ -6,7 +6,6 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Calculator from "./pages/Calculator";
 import Knowledge from "./pages/Knowledge";
-import Book from "./pages/BookACall";
 import BookACall from "./pages/BookACall";
 import Contact from "./pages/Contact";
 
