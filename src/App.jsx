@@ -8,18 +8,20 @@ import Calculator from "./pages/Calculator";
 import Knowledge from "./pages/Knowledge";
 import Book from "./pages/BookACall";
 import BookACall from "./pages/BookACall";
+import Contact from "./pages/Contact";
 
 export default function App() {
   return (
     <Router>
       <div className="min-h-screen flex flex-col text-black dark:text-white">
         <Navbar />
-        <main className="flex-grow container mx-auto py-6">
+        <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/calculator" element={<Calculator />} />
             <Route path="/knowledge" element={<Knowledge />} />
             <Route path="/book" element={<BookACall />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
         <Footer />
