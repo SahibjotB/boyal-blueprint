@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export default function Navbar() {
   return (
     <header className="bg-black shadow-md">
-      <nav className="container mx-auto px-4 py-5 flex justify-between items-center">
+      <nav className="mx-8 py-6 flex items-center">
         <NavLink
           to="/"
           className={({ isActive }) =>
@@ -13,12 +13,12 @@ export default function Navbar() {
         >
           The Boyal Blueprint
         </NavLink>
-        <ul className="flex space-x-6 text-sm sm:text-base font-medium">
+        <ul className="ml-auto flex space-x-6 text-sm sm:text-base font-medium">
           <li>
             <NavLink
               to="/calculator"
               className={({ isActive }) =>
-                isActive ? "text-orange-500" : "text-white hover:text-orange-500"
+                isActive ? "text-orange-500" : "text-white hover:text-orange-500 font-semibold"
               }
             >
               Calculator
@@ -26,22 +26,22 @@ export default function Navbar() {
           </li>
           <li>
             <NavLink
-              to="/knowledge"
+              to="/book"
               className={({ isActive }) =>
-                isActive ? "text-orange-500" : "text-white hover:text-orange-500"
+                isActive ? "text-orange-500" : "text-white hover:text-orange-500 font-semibold"
               }
             >
-              Knowledge
+              Book a Call
             </NavLink>
           </li>
           <li>
             <NavLink
-              to="/book"
+              to="/knowledge"
               className={({ isActive }) =>
-                isActive ? "text-orange-500" : "text-white hover:text-orange-500"
+                isActive ? "text-orange-500" : "text-white hover:text-orange-500 font-semibold"
               }
             >
-              Book
+              Knowledge
             </NavLink>
           </li>
 
@@ -49,7 +49,7 @@ export default function Navbar() {
             <NavLink
               to="/contact"
               className={({ isActive }) =>
-                isActive ? "text-orange-500" : "text-white hover:text-orange-500"
+                isActive ? "text-orange-500" : "text-white hover:text-orange-500 font-semibold"
               }
             >
               Contact

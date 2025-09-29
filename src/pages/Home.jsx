@@ -44,7 +44,7 @@ export default function Home() {
           },
           {
             to: "/book",
-            title: "Book a Call",
+            title: "Book a Consultation",
             desc:
               "Answer a few questions and connect with a trusted realtor for personalized help.",
             pos: "mx-auto",
