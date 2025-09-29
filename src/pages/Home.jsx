@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Home() {
 return (
   <>
-    <div className="fixed inset-0 w-screen h-screen bg-gradient-to-b from-black to-orange-950 -z-10" />
+    <div className="fixed inset-0 w-screen h-screen bg-gradient-to-b from-black to-orange-900 -z-10" />
 
     <section className="w-full min-h-screen flex flex-col justify-start pt-60 items-center text-center px-6 py-16">
       <h1 className="text-4xl sm:text-5xl font-bold text-orange-600 mb-6">

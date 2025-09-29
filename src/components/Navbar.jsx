@@ -37,6 +37,16 @@ export default function Navbar() {
               Knowledge
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/book"
+              className={({ isActive }) =>
+                isActive ? "text-orange-600" : "text-gray-700 dark:text-gray-300 hover:text-orange-500"
+              }
+            >
+              Book
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>

@@ -6,6 +6,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Calculator from "./pages/Calculator";
 import Knowledge from "./pages/Knowledge";
+import Book from "./pages/BookACall";
+import BookACall from "./pages/BookACall";
 
 export default function App() {
   return (
@@ -17,6 +19,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/calculator" element={<Calculator />} />
             <Route path="/knowledge" element={<Knowledge />} />
+            <Route path="/book" element={<BookACall />} />
           </Routes>
         </main>
         <Footer />
