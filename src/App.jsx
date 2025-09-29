@@ -2,8 +2,8 @@
 import React from "react"; 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Navbar from "./Components/Navbar";
-import Footer from "./Components/Footer";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Calculator from "./pages/Calculator";
 import Knowledge from "./pages/Knowledge";
 import BookACall from "./pages/BookACall";
@@ -14,7 +14,7 @@ export default function App() {
     <Router>
       <div className="min-h-screen flex flex-col text-black dark:text-white">
         <Navbar />
-        <main className="flex-grow">
+        <div className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/calculator" element={<Calculator />} />
@@ -22,7 +22,7 @@ export default function App() {
             <Route path="/book" element={<BookACall />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
-        </main>
+        </div>
         <Footer />
       </div>
     </Router>
