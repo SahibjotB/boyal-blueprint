@@ -37,7 +37,7 @@ export default function Calculator() {
 
   return (
     <div className="w-full flex flex-col items-center px-4 py-10">
-      <h1 className="text-4xl font-bold mb-6">
+      <h1 className="text-4xl font-bold mb-6 text-center">
         Rent vs Buy Calculator
       </h1>
 
