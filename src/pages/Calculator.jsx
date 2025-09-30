@@ -36,7 +36,7 @@ export default function Calculator() {
   const recommendation = mortgageTotal < rentTotal ? "Buying" : "Renting";
 
   return (
-    <div className="min-h-screen w-full bg-white text-black flex flex-col items-center px-4 py-10">
+    <div className="w-full bg-white text-black flex flex-col items-center px-4 py-10">
       <h1 className="text-4xl font-bold text-black mb-6">
         Rent vs Buy Calculator
       </h1>

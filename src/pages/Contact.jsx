@@ -26,7 +26,7 @@ const Contact = () => {
 
   return (
     <>
-    <div className="flex flex-col items-center justify-start pt-16 min-h-screen px-4">  
+    <div className="flex flex-col items-center justify-start pt-16 px-4">  
       <div className="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full">
         <h2 className="text-2xl font-bold mb-6 text-orange-600 text-center">Contact Us</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -76,7 +76,7 @@ const Contact = () => {
             type="submit"
             className="w-full bg-orange-500 text-white font-bold py-3 rounded-md hover:bg-orange-600 transition"
           >
-            Book Now
+            Contact
           </button>
         </form>
       </div>

@@ -82,7 +82,7 @@ export default function BookACall() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start pt-24 bg-gray-50">
+    <div className="flex flex-col items-center justify-start pt-24 bg-gray-50">
       <h1 className="text-black text-4xl font-bold mb-4 text-center">Book a Consultation</h1>
       <p className="text-center text-gray-600 mb-6 max-w-2xl">
         A specialized real estate expert from my team will call you in the next 24 hours.

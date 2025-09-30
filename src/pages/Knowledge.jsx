@@ -13,7 +13,6 @@ export default function Knowledge() {
   const [loading, setLoading] = useState(false);
 
   const sendMessage = async () => {
-    if (!input.trim()) return;
     const userMessage = { role: "user", content: input };
     const updatedMessages = [...messages, userMessage];
     setMessages(updatedMessages);
@@ -21,34 +20,38 @@ export default function Knowledge() {
     setLoading(true);
 
     try {
-      const res = await fetch("https://api.openai.com/v1/chat/completions", {
+      console.log("🚀 Sending to proxy backend /api/chat...");
+
+      const res = await fetch("/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer YOUR_OPENAI_API_KEY`,
         },
-        body: JSON.stringify({
-          model: "gpt-4",
-          messages: [
-            {
-              role: "system",
-              content:
-                "You are a professional real estate expert focused on the Greater Toronto Area. Provide clear, reliable, and specific answers to questions about housing, market trends, and investment.",
-            },
-            ...updatedMessages,
-          ],
-        }),
+        body: JSON.stringify({ messages: updatedMessages }),
       });
 
       const data = await res.json();
       const botReply = data.choices?.[0]?.message?.content;
+
       if (botReply) {
         setMessages([...updatedMessages, { role: "assistant", content: botReply }]);
+      } else {
+        setMessages([
+          ...updatedMessages,
+          {
+            role: "assistant",
+            content: "❌ No response from GPT. Try again later.",
+          },
+        ]);
       }
     } catch (err) {
+      console.error("❌ Error talking to backend:", err);
       setMessages([
         ...updatedMessages,
-        { role: "assistant", content: "Sorry, something went wrong. Try again later." },
+        {
+          role: "assistant",
+          content: "⚠️ Something went wrong. Please try again later.",
+        },
       ]);
     } finally {
       setLoading(false);
