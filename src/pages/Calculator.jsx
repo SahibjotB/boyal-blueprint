@@ -36,14 +36,14 @@ export default function Calculator() {
   const recommendation = mortgageTotal < rentTotal ? "Buying" : "Renting";
 
   return (
-    <div className="w-full bg-white text-black flex flex-col items-center px-4 py-10">
-      <h1 className="text-4xl font-bold text-black mb-6">
+    <div className="w-full flex flex-col items-center px-4 py-10">
+      <h1 className="text-4xl font-bold mb-6">
         Rent vs Buy Calculator
       </h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 w-full max-w-6xl">
         {/* Inputs */}
-        <div className="bg-gray-100 p-6 rounded-2xl shadow-md space-y-6">
+        <div className="bg-gray-100 dark:bg-neutral-900 p-6 rounded-2xl shadow-md space-y-6">
           <div>
             <label className="block mb-1 font-semibold">Annual Income</label>
             <input
@@ -64,7 +64,7 @@ export default function Calculator() {
             <select
               value={creditScore}
               onChange={(e) => setCreditScore(e.target.value)}
-              className="w-full p-2 rounded "
+              className="w-full p-2 rounded dark:bg-neutral-800"
             >
               <option value="excellent">Excellent (760+)</option>
               <option value="good">Good (700-759)</option>
@@ -117,8 +117,8 @@ export default function Calculator() {
         </div>
 
         {/* Results */}
-        <div className="bg-gray-100 p-6 rounded-2xl shadow-md space-y-4 ">
-          <h2 className="text-2xl font-bold text-center text-black mb-4">
+        <div className="bg-gray-100 dark:bg-neutral-900 p-6 rounded-2xl shadow-md space-y-4 ">
+          <h2 className="text-2xl font-bold text-center mb-4">
             Your Results
           </h2>
           <div className="flex justify-between font-medium">

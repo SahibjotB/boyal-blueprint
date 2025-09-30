@@ -59,7 +59,7 @@ export default function Knowledge() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-black text-black dark:text-white p-6 flex flex-col items-center">
+    <div className="text-black dark:text-white p-6 flex flex-col items-center">
       <div className="text-center mb-6">
         <h1 className="text-4xl font-bold mb-2">Real Estate Knowledge Hub</h1>
         <p className="text-gray-600 dark:text-gray-300">
@@ -67,7 +67,7 @@ export default function Knowledge() {
         </p>
       </div>
 
-      <div className="w-full max-w-3xl bg-white dark:bg-zinc-900 rounded-2xl shadow-lg flex flex-col h-[600px] overflow-hidden">
+      <div className="w-full max-w-3xl bg-white dark:bg-neutral-900 rounded-2xl shadow-lg flex flex-col h-[590px] overflow-hidden">
         <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
           {messages.map((msg, idx) => (
             <div
@@ -78,7 +78,7 @@ export default function Knowledge() {
                 className={`rounded-xl px-4 py-3 max-w-[75%] text-sm whitespace-pre-line shadow-sm ${
                   msg.role === "user"
                     ? "bg-orange-500 text-white"
-                    : "bg-gray-200 dark:bg-zinc-800"
+                    : "bg-gray-200 dark:bg-neutral-800"
                 }`}
               >
                 {msg.content}
@@ -90,7 +90,7 @@ export default function Knowledge() {
           )}
         </div>
 
-        <div className="border-t border-gray-300 dark:border-zinc-700 px-4 py-3">
+        <div className="border-t border-gray-300 dark:border-neutral-700 px-4 py-3">
           <div className="flex gap-2">
             <input
               type="text"
@@ -98,7 +98,7 @@ export default function Knowledge() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-              className="flex-1 bg-gray-100 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-600 rounded-lg px-4 py-2 text-sm text-black dark:text-white focus:outline-none"
+              className="flex-1 bg-gray-100 dark:bg-neutral-800 border border-gray-300 dark:border-neutral-600 rounded-lg px-4 py-2 text-sm text-black dark:text-white focus:outline-none"
             />
             <button
               onClick={sendMessage}

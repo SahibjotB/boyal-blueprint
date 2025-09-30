@@ -27,7 +27,7 @@ const Contact = () => {
   return (
     <>
     <div className="flex flex-col items-center justify-start pt-16 px-4">  
-      <div className="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full">
+      <div className="dark:bg-neutral-900 rounded-2xl shadow-lg p-8 max-w-lg w-full">
         <h2 className="text-2xl font-bold mb-6 text-orange-600 text-center">Contact Us</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
@@ -36,7 +36,7 @@ const Contact = () => {
             placeholder="Your Name"
             value={form.name}
             onChange={handleChange}
-            className="text-black w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="dark:bg-neutral-800 w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
             required
           />
           <input
@@ -45,7 +45,7 @@ const Contact = () => {
             placeholder="Email"
             value={form.email}
             onChange={handleChange}
-            className="text-black w-full p-3 border text-black rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="dark:bg-neutral-800 w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
             required
           />
           <input
@@ -54,14 +54,14 @@ const Contact = () => {
             placeholder="Phone Number"
             value={form.phone}
             onChange={handleChange}
-            className="text-black w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="dark:bg-neutral-800 w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
           <input
             type="date"
             name="date"
             value={form.date}
             onChange={handleChange}
-            className="text-black w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="dark:bg-neutral-800 w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
             required
           />
           <textarea
@@ -70,7 +70,7 @@ const Contact = () => {
             rows={3}
             value={form.message}
             onChange={handleChange}
-            className="text-black w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="dark:bg-neutral-800 w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
           <button
             type="submit"

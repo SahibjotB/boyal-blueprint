@@ -82,13 +82,13 @@ export default function BookACall() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-start pt-24 bg-gray-50">
-      <h1 className="text-black text-4xl font-bold mb-4 text-center">Book a Consultation</h1>
-      <p className="text-center text-gray-600 mb-6 max-w-2xl">
+    <div className="flex flex-col items-center justify-start pt-8">
+      <h1 className="text-4xl font-bold mb-4 text-center">Book a Consultation</h1>
+      <p className="text-center mb-6 max-w-2xl">
         A specialized real estate expert from my team will call you in the next 24 hours.
       </p>
 
-      <div className="bg-white p-10 rounded-2xl shadow-xl w-full max-w-3xl h-[500px] flex flex-col justify-center text-black">
+      <div className="bg-white dark:bg-neutral-900 p-10 rounded-2xl shadow-xl w-full max-w-3xl h-[500px] flex flex-col justify-center">
         {submitted ? (
           <div className="text-center flex flex-col justify-center items-center h-full">
             <h2 className="text-3xl font-bold text-green-600 mb-4">
@@ -116,7 +116,7 @@ export default function BookACall() {
               {current.input ? (
                 <input
                   type={current.key === "email" ? "email" : "text"}
-                  className="w-full border border-gray-300 rounded-md p-4 mb-8 text-black"
+                  className="w-full border border-gray-300 dark:border-neutral-800 rounded-md p-4 mb-8 text-black"
                   value={answers[current.key] || ""}
                   onChange={(e) => handleChange(current.key, e.target.value)}
                 />
@@ -126,9 +126,9 @@ export default function BookACall() {
                     <button
                       key={opt}
                       onClick={() => handleChange(current.key, opt)}
-                      className={`border rounded-md p-4 text-left transition hover:bg-orange-300 ${
-                        answers[current.key] === opt ? "bg-orange-300" : "bg-white"
-                      } text-black`}
+                      className={`border rounded-md p-4 text-left transition hover:bg-orange-300 dark:hover:bg-orange-600 ${
+                        answers[current.key] === opt ? "bg-orange-300 dark:bg-orange-600" : "bg-white dark:bg-black"
+                      } text-black dark:text-white`}
                     >
                       {opt}
                     </button>

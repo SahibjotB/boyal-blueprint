@@ -3,22 +3,32 @@ import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { SunIcon, MoonIcon } from "./ThemeIcons";
 import logo from "../assets/boyal-blueprint-white.png";
+import darklogo from "../assets/boyal-blueprint-black.png";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
 
+  // Sync dark mode state to HTML and localStorage
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
   }, [darkMode]);
 
   return (
-    <header className="bg-black text-white shadow-md sticky top-0 z-50">
+    <header className="bg-black dark:bg-white dark:text-black text-white shadow-md sticky top-0 z-50">
       <nav className="px-10 py-4 flex items-center justify-between">
         {/* Logo */}
         <NavLink to="/" className="shrink-0">
           <img
-            src={logo}
+            src={darkMode ? darklogo : logo}
             alt="Logo"
             className="w-36 sm:w-40 h-auto hover:scale-110 transition-transform"
           />
@@ -49,34 +59,34 @@ export default function Navbar() {
           {/* Dark Mode Toggle */}
           <button
             onClick={() => setDarkMode((prev) => !prev)}
-            className="ml-2 p-2 rounded-full bg-white text-black dark:text-white dark:bg-black hover:invert transition-colors"
+            className="p-2 rounded-full bg-black text-white dark:text-black dark:bg-white hover:invert transition-colors"
             aria-label="Toggle dark mode"
           >
             {darkMode ? (
-              <SunIcon className="w-6 h-6 text-yellow-400" />
+              <SunIcon className="w-8 h-8" />
             ) : (
-              <MoonIcon className="w-6 h-6" />
+              <MoonIcon className="w-8 h-8" />
             )}
           </button>
         </ul>
 
-        {/* Mobile Menu Icon & Dark Mode Toggle */}
+        {/* Mobile Controls */}
         <div className="md:hidden flex items-center space-x-2">
           <button
             onClick={() => setDarkMode((prev) => !prev)}
-            className="p-2 rounded-full bg-white text-black dark:text-white dark:bg-black hover:invert transition-colors"
+            className="p-2 rounded-full bg-black text-white dark:text-black dark:bg-white hover:invert transition-colors"
             aria-label="Toggle dark mode"
           >
             {darkMode ? (
-              <SunIcon className="w-6 h-6 text-yellow-400" />
+              <SunIcon className="w-8 h-8" />
             ) : (
-              <MoonIcon className="w-6 h-6" />
+              <MoonIcon className="w-8 h-8" />
             )}
           </button>
 
           <button
             onClick={() => setMenuOpen(true)}
-            className="text-white focus:outline-none"
+            className="text-white dark:text-black focus:outline-none"
           >
             <Menu size={28} />
           </button>
@@ -91,7 +101,7 @@ export default function Navbar() {
         >
           <div className="flex-1" />
           <div
-            className="relative w-64 h-full bg-black text-white p-6 shadow-lg flex flex-col"
+            className="relative w-64 h-full bg-black dark:bg-white text-white dark:text-black p-6 shadow-lg flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -111,7 +121,7 @@ export default function Navbar() {
               <NavLink
                 key={to}
                 to={to}
-                className="w-full mb-3 px-4 py-2 text-center rounded-md bg-orange-500 text-white hover:bg-white hover:text-black transition duration-200 font-semibold"
+                className="w-full mb-3 px-4 py-2 text-center rounded-md bg-orange-500 text-white hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white transition duration-200 font-semibold"
                 onClick={() => setMenuOpen(false)}
               >
                 {label}
