@@ -31,31 +31,56 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="w-full bg-gray-100 dark:bg-neutral-900 min-h-[40vh] flex flex-col justify-center items-center text-center px-4 sm:px-8">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-          Welcome to The Boyal Blueprint
+      <section className="w-full min-h-screen flex flex-col justify-start pt-60 items-center text-center px-4 sm:px-8">
+        <h1 className="text-4xl sm:text-4xl md:text-5xl text-gray-900 dark:text-white font-display font-medium">
+          Welcome to the
         </h1>
-        <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 mb-6 max-w-2xl">
+        <h2 className="text-5xl sm:text-5xl md:text-6xl font-bold text-orange-500 font-display mt-2">
+          Boyal Blueprint
+        </h2>
+        <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 mt-4 max-w-2xl">
           A Clear Path to Homeownership — made for first-time home buyers.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Link
-            to="/calculator"
-            className="bg-orange-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-orange-600 transition text-center"
+        <div className="mt-8">
+          <a
+            href="#services"
+            className="bg-orange-500 text-white px-8 py-3 rounded-md font-semibold hover:bg-orange-600 transition"
           >
             Get Started
-          </Link>
-          <Link
-            to="/book"
-            className="border border-orange-500 text-orange-500 px-6 py-3 rounded-md font-semibold hover:bg-orange-100 dark:hover:bg-orange-500 dark:hover:text-white transition text-center"
-          >
-            Learn More
-          </Link>
+          </a>
+        </div>
+        {/* 🔹 Continuous Wave Divider */}
+        <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none justify-start pt-0">
+          <div className="relative w-[200%] h-24 animate-wave">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1440 320"
+              preserveAspectRatio="none"
+              className="absolute top-0 left-0 w-full h-full"
+            >
+              <path
+                className="fill-black dark:fill-white"
+                d="M0,192L48,186.7C96,181,192,171,288,165.3C384,160,480,160,576,170.7C672,181,768,203,864,202.7C960,203,1056,181,1152,170.7C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+              ></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1440 320"
+              preserveAspectRatio="none"
+              className="absolute top-0 left-[100%] w-full h-full"
+            >
+              <path
+                className="fill-black dark:fill-white"
+                d="M0,192L48,186.7C96,181,192,171,288,165.3C384,160,480,160,576,170.7C672,181,768,203,864,202.7C960,203,1056,181,1152,170.7C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+              ></path>
+            </svg>
+          </div>
         </div>
       </section>
 
+
       {/* Services Section */}
-      <section className="py-10 px-6 sm:px-10 lg:px-20 bg-white dark:bg-black text-center">
+      <section id="services" className="pb-8 px-6 sm:px-10 lg:px-20 bg-white dark:bg-black text-center">
         <h2 className="text-2xl sm:text-3xl font-display font-bold mb-10 text-gray-900 dark:text-white">
           Our Services
         </h2>
@@ -65,7 +90,7 @@ export default function Home() {
             <Link
               key={title}
               to={to}
-              className="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 rounded-2xl p-6 shadow-sm transition-all duration-300 transform hover:scale-[1.02] hover:bg-black dark:hover:bg-white group"
+              className="bg-white dark:bg-black border border-gray-200 dark:border-neutral-900 rounded-2xl p-6 shadow-sm transition-all duration-300 transform hover:scale-[1.02] hover:bg-black dark:hover:bg-white group"
             >
               {/* Icon container */}
               <div className="w-16 h-16 mx-auto mb-5 rounded-xl flex items-center justify-center">

@@ -59,7 +59,7 @@ export default function Knowledge() {
   };
 
   return (
-    <div className="text-black dark:text-white p-6 flex flex-col items-center">
+    <div className="text-black dark:text-white pt-6 px-6 flex flex-col items-center">
       <div className="text-center mb-6">
         <h1 className="text-4xl font-bold mb-2">Real Estate Knowledge Hub</h1>
         <p className="text-gray-600 dark:text-gray-300">
