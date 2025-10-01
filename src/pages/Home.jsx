@@ -41,7 +41,7 @@ export default function Home() {
         <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 mt-4 max-w-2xl">
           A Clear Path to Homeownership — made for first-time home buyers.
         </p>
-        <div className="mt-8">
+        <div className="mt-8 pb-60">
           <a
             href="#services"
             className="bg-orange-500 text-white px-8 py-3 rounded-md font-semibold hover:bg-orange-600 transition"
@@ -50,7 +50,7 @@ export default function Home() {
           </a>
         </div>
         {/* 🔹 Continuous Wave Divider */}
-        <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none justify-start pt-0">
+        <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
           <div className="relative w-[200%] h-24 animate-wave">
             <svg
               xmlns="http://www.w3.org/2000/svg"
