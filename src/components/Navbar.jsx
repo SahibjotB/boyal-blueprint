@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { SunIcon, MoonIcon } from "./ThemeIcons";
+import { SunIcon, MoonIcon } from "../assets/Icons.jsx";
 import logo from "../assets/boyal-blueprint-white.png";
 import darklogo from "../assets/boyal-blueprint-black.png";
 

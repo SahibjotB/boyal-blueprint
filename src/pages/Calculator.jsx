@@ -43,7 +43,7 @@ export default function Calculator() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 w-full max-w-6xl">
         {/* Inputs */}
-        <div className="bg-gray-100 dark:bg-neutral-900 p-6 rounded-2xl shadow-md space-y-6">
+        <div className="bg-white dark:bg-neutral-900 p-6 rounded-2xl shadow-md space-y-6">
           <div>
             <label className="block mb-1 font-semibold">Annual Income</label>
             <input
@@ -117,7 +117,7 @@ export default function Calculator() {
         </div>
 
         {/* Results */}
-        <div className="bg-gray-100 dark:bg-neutral-900 p-6 rounded-2xl shadow-md space-y-4 ">
+        <div className="bg-white dark:bg-neutral-900 p-6 rounded-2xl shadow-md space-y-4 ">
           <h2 className="text-2xl font-bold text-center mb-4">
             Your Results
           </h2>
