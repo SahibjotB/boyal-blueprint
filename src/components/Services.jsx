@@ -29,10 +29,10 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="pt-10 pb-8 px-6 sm:px-10 lg:px-20 bg-white dark:bg-black text-center"
+      className="pt-10 pb-8 px-6 sm:px-10 lg:px-20 bg-black dark:bg-white text-center"
       onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
     >
-      <h2 className="text-2xl sm:text-3xl font-display font-bold mb-10 text-gray-900 dark:text-white">
+      <h2 className="text-2xl sm:text-3xl font-display font-bold mb-10 text-white dark:text-gray-900">
         Our Services
       </h2>
 
@@ -40,6 +40,7 @@ export default function Services() {
         {services.map((service) => (
           <GlowCard key={service.title} {...service} mousePos={mousePos} />
         ))}
+      
       </div>
     </section>
   );

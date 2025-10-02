@@ -16,20 +16,22 @@ export default function GlowCard({ to, title, desc, Icon, mousePos }) {
     const dy = Math.max(rect.top - mousePos.y, 0, mousePos.y - rect.bottom);
     const dist = Math.sqrt(dx * dx + dy * dy);
 
-    if (dist < 200) {
-      glow = `radial-gradient(350px circle at ${
+    // reasonable threshold (closer than before but not too small)
+    if (dist < 60) {
+      glow = `radial-gradient(300px circle at ${
         mousePos.x - rect.left
-      }px ${mousePos.y - rect.top}px, rgba(255,128,0,1), transparent 95%)`;
+      }px ${mousePos.y - rect.top}px, rgba(255,128,0,1), transparent 40%)`;
     }
   }
+
 
 
   return (
     <Link
       ref={ref}
       to={to}
-      className="relative bg-white dark:bg-black border border-gray-200 dark:border-neutral-900 
-                hover:bg-black dark:hover:bg-white rounded-2xl p-6 shadow-sm 
+      className="relative bg-black dark:bg-white border border-neutral-900 dark:border-gray-200 
+                hover:bg-white dark:hover:bg-black rounded-2xl p-6 shadow-sm 
                 transition-all duration-300 transform overflow-hidden group"
     >
       {/* Glow under content */}
@@ -45,26 +47,25 @@ export default function GlowCard({ to, title, desc, Icon, mousePos }) {
           WebkitMaskComposite: "xor",
           maskComposite: "exclude",
           transition: "background 0.25s ease-out",
-          filter: "brightness(1.5) blur(4px)", // ✨ makes it pop more
+          filter: "brightness(1.5) blur(4px)",
         }}
       />
 
-
-      {/* Content above */}
+      {/* Content */}
       <div className="relative z-10">
         <div className="w-16 h-16 mx-auto mb-5 rounded-xl flex items-center justify-center">
-          <Icon className="w-12 h-12 text-black dark:text-white group-hover:text-white dark:group-hover:text-black transition-colors" />
+          <Icon className="w-12 h-12 text-white dark:text-black group-hover:text-black dark:group-hover:text-white transition-colors" />
         </div>
 
         <h3 className="text-lg sm:text-xl font-semibold 
-                      text-gray-900 dark:text-white 
-                      group-hover:text-white dark:group-hover:text-black transition-colors">
+                      text-white dark:text-gray-900 
+                      group-hover:text-black dark:group-hover:text-white transition-colors">
           {title}
         </h3>
 
         <p className="mt-2 text-sm sm:text-base 
-                      text-gray-600 dark:text-gray-300 
-                      group-hover:text-white dark:group-hover:text-black transition-colors">
+                      text-gray-300 dark:text-gray-600 
+                      group-hover:text-black dark:group-hover:text-white transition-colors">
           {desc}
         </p>
       </div>
