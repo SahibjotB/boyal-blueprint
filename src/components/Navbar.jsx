@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { SunIcon, MoonIcon } from "../assets/Icons.jsx";
-import logo from "../assets/boyal-blueprint-white.png";
-import darklogo from "../assets/boyal-blueprint-black.png";
+import darklogo from "../assets/boyal-blueprint-white.png";
+import logo from "../assets/boyal-blueprint-black.png";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem("theme") === "dark";
   });
+  const [scrolled, setScrolled] = useState(false);
 
-  // Sync dark mode state to HTML and localStorage
+  // Sync dark mode
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -22,20 +23,40 @@ export default function Navbar() {
     }
   }, [darkMode]);
 
-  return (
-    <header className="bg-black dark:bg-white dark:text-black text-white shadow-md sticky top-0 z-50">
-      <nav className="px-10 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <NavLink to="/" className="shrink-0">
-          <img
-            src={darkMode ? darklogo : logo}
-            alt="Logo"
-            className="w-36 sm:w-40 h-auto hover:scale-110 transition-transform"
-          />
-        </NavLink>
+  // Track scroll
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-        {/* Desktop Links */}
-        <ul className="hidden md:flex space-x-10 font-semibold text-lg items-center">
+  return (
+    <header
+      className={`sticky top-0 z-50 flex justify-center transition-all duration-500 ${
+        scrolled ? "mt-0" : "mt-4"
+      }`}
+    >
+      <nav
+        className={`grid grid-cols-3 items-center h-20 transition-all duration-500 px-8 sm:px-16
+          ${
+            scrolled
+              ? "bg-white dark:bg-black border border-gray-200 dark:border-neutral-800 rounded-xl shadow-md w-[90%]"
+              : "bg-transparent w-full"
+          }`}
+      >
+        {/* Left: Logo */}
+        <div className="flex justify-start">
+          <NavLink to="/" className="shrink-0">
+            <img
+              src={darkMode ? darklogo : logo}
+              alt="Logo"
+              className="w-32 sm:w-36 h-auto hover:scale-110 transition-transform"
+            />
+          </NavLink>
+        </div>
+
+        {/* Center: Nav Links */}
+        <ul className="hidden md:flex justify-center space-x-10 font-semibold text-lg">
           {[
             { to: "/calculator", label: "Calculator" },
             { to: "/book", label: "Book a Call" },
@@ -55,38 +76,44 @@ export default function Navbar() {
               </NavLink>
             </li>
           ))}
-
-          {/* Dark Mode Toggle */}
-          <button
-            onClick={() => setDarkMode((prev) => !prev)}
-            className="p-2 rounded-full bg-black text-white dark:text-black dark:bg-white hover:invert transition-colors"
-            aria-label="Toggle dark mode"
-          >
-            {darkMode ? (
-              <SunIcon className="w-8 h-8" />
-            ) : (
-              <MoonIcon className="w-8 h-8" />
-            )}
-          </button>
         </ul>
 
-        {/* Mobile Controls */}
-        <div className="md:hidden flex items-center space-x-2">
+        {/* Right: Dark Mode Toggle */}
+        <div className="flex justify-end">
           <button
             onClick={() => setDarkMode((prev) => !prev)}
-            className="p-2 rounded-full bg-black text-white dark:text-black dark:bg-white hover:invert transition-colors"
+            className="p-2 rounded-full bg-black text-white dark:text-black dark:bg-white hover:invert transition-colors md:block hidden"
             aria-label="Toggle dark mode"
           >
             {darkMode ? (
-              <SunIcon className="w-8 h-8" />
+              <SunIcon className="w-6 h-6" />
             ) : (
-              <MoonIcon className="w-8 h-8" />
+              <MoonIcon className="w-6 h-6" />
             )}
           </button>
+        </div>
 
+
+          {/* MobileDark Mode Toggle */}
+        <div className="flex justify-end pr-8">
+          <button
+            onClick={() => setDarkMode((prev) => !prev)}
+            className="p-2 rounded-full bg-black text-white dark:text-black dark:bg-white hover:invert transition-colors md:hidden"
+            aria-label="Toggle dark mode"
+          >
+            {darkMode ? (
+              <SunIcon className="w-6 h-6" />
+            ) : (
+              <MoonIcon className="w-6 h-6" />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <div className="absolute right-6 md:hidden flex items-center space-x-2">
           <button
             onClick={() => setMenuOpen(true)}
-            className="text-white dark:text-black focus:outline-none"
+            className="text-black dark:text-white focus:outline-none"
           >
             <Menu size={28} />
           </button>
@@ -101,7 +128,7 @@ export default function Navbar() {
         >
           <div className="flex-1" />
           <div
-            className="relative w-64 h-full bg-black dark:bg-white text-white dark:text-black p-6 shadow-lg flex flex-col"
+            className="relative w-64 h-full bg-white dark:bg-black text-black dark:text-white p-6 shadow-lg flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             <button
