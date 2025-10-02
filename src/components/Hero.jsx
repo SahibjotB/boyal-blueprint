@@ -3,7 +3,7 @@ import WaveDivider from "./WaveDivider";
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-screen flex flex-col justify-start pt-60 items-center text-center px-4 sm:px-8 overflow-hidden">
+    <section className="relative w-full min-h-screen flex flex-col justify-center pb-40 items-center text-center px-4 sm:px-8 overflow-hidden">
       <h1 className="text-4xl sm:text-4xl md:text-5xl text-gray-900 dark:text-white font-display font-medium">
         Welcome to
       </h1>

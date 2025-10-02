@@ -1,7 +1,7 @@
 export default function WaveDivider() {
   return (
     <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none pointer-events-none">
-      <div className="relative flex w-[200%] h-96 animate-wave">
+      <div className="relative flex w-[200%] h-120 animate-wave">
         {/* Wave #1 */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
