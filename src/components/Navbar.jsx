@@ -37,7 +37,7 @@ export default function Navbar() {
       }`}
     >
       <nav
-        className={`grid grid-cols-3 items-center h-20 transition-all duration-500 px-6 sm:px-16
+        className={`relative flex items-center justify-between h-20 transition-all duration-500 px-6 sm:px-16
           ${
             scrolled
               ? "bg-white dark:bg-black border border-gray-200 dark:border-neutral-800 rounded-xl shadow-md w-[90%]"
@@ -45,7 +45,7 @@ export default function Navbar() {
           }`}
       >
         {/* Left: Logo */}
-        <div className="flex justify-start">
+        <div className="flex-shrink-0">
           <NavLink to="/" className="shrink-0">
             <img
               src={darkMode ? darklogo : logo}
@@ -56,7 +56,7 @@ export default function Navbar() {
         </div>
 
         {/* Center: Nav Links */}
-        <ul className="hidden md:flex justify-center space-x-10 font-semibold text-lg">
+        <ul className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-10 font-semibold text-lg">
           {[
             { to: "/calculator", label: "Calculator" },
             { to: "/book", label: "Book a Call" },
@@ -67,9 +67,7 @@ export default function Navbar() {
               <NavLink
                 to={to}
                 className={({ isActive }) =>
-                  isActive
-                    ? "text-orange-500"
-                    : "hover:text-orange-500 transition-colors"
+                  `${isActive ? "text-orange-500" : "hover:text-orange-500 transition-colors"} whitespace-nowrap`
                 }
               >
                 {label}
@@ -79,7 +77,7 @@ export default function Navbar() {
         </ul>
 
         {/* Right: Dark Mode + Mobile Menu */}
-        <div className="flex items-center justify-end space-x-4 col-start-3 col-end-4">
+        <div className="flex items-center space-x-4">
           {/* Dark Mode Toggle */}
           <button
             onClick={() => setDarkMode((prev) => !prev)}
@@ -101,8 +99,8 @@ export default function Navbar() {
             <Menu size={28} />
           </button>
         </div>
-
       </nav>
+
 
 
       {/* Mobile Drawer */}
