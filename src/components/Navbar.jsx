@@ -37,7 +37,7 @@ export default function Navbar() {
       }`}
     >
       <nav
-        className={`grid grid-cols-3 items-center h-20 transition-all duration-500 px-8 sm:px-16
+        className={`grid grid-cols-3 items-center h-20 transition-all duration-500 px-6 sm:px-16
           ${
             scrolled
               ? "bg-white dark:bg-black border border-gray-200 dark:border-neutral-800 rounded-xl shadow-md w-[90%]"
@@ -78,11 +78,12 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Right: Dark Mode Toggle */}
-        <div className="flex justify-end">
+        {/* Right: Dark Mode + Mobile Menu */}
+        <div className="flex items-center justify-end space-x-4 col-start-3 col-end-4">
+          {/* Dark Mode Toggle */}
           <button
             onClick={() => setDarkMode((prev) => !prev)}
-            className="p-2 rounded-full bg-black text-white dark:text-black dark:bg-white hover:invert transition-colors md:block hidden"
+            className="p-2 rounded-full bg-black text-white dark:text-black dark:bg-white hover:invert transition-colors"
             aria-label="Toggle dark mode"
           >
             {darkMode ? (
@@ -91,34 +92,18 @@ export default function Navbar() {
               <MoonIcon className="w-6 h-6" />
             )}
           </button>
-        </div>
 
-
-          {/* MobileDark Mode Toggle */}
-        <div className="flex justify-end pr-8">
-          <button
-            onClick={() => setDarkMode((prev) => !prev)}
-            className="p-2 rounded-full bg-black text-white dark:text-black dark:bg-white hover:invert transition-colors md:hidden"
-            aria-label="Toggle dark mode"
-          >
-            {darkMode ? (
-              <SunIcon className="w-6 h-6" />
-            ) : (
-              <MoonIcon className="w-6 h-6" />
-            )}
-          </button>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <div className="absolute right-6 md:hidden flex items-center space-x-2">
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(true)}
-            className="text-black dark:text-white focus:outline-none"
+            className="md:hidden text-black dark:text-white focus:outline-none"
           >
             <Menu size={28} />
           </button>
         </div>
+
       </nav>
+
 
       {/* Mobile Drawer */}
       {menuOpen && (
