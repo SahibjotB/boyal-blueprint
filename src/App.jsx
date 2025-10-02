@@ -14,7 +14,7 @@ export default function App() {
     <Router>
       <div className="min-h-screen flex flex-col text-black dark:text-white dark:bg-black">
         <Navbar />
-        <div className="flex-grow">
+        <div className="flex-grow pt-24">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/calculator" element={<Calculator />} />

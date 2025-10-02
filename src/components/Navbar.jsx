@@ -32,16 +32,15 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 flex justify-center transition-all duration-500 ${
-        scrolled ? "mt-0" : "mt-4"
+      className={`fixed top-4 left-0 right-0 z-50 flex justify-center transition-all duration-500 ${
+        scrolled ? "mt-0" : "mt-0"
       }`}
     >
       <nav
         className={`relative flex items-center justify-between h-20 transition-all duration-500 px-6 sm:px-16
-          ${
-            scrolled
-              ? "bg-white dark:bg-black border border-gray-200 dark:border-neutral-800 rounded-xl shadow-md w-[90%]"
-              : "bg-transparent w-full"
+          ${scrolled
+            ? "backdrop-blur-md bg-white/70 dark:bg-black/70 border border-gray-200 dark:border-neutral-800 rounded-xl shadow-md w-[80%]"
+            : "bg-transparent border border-transparent w-full"
           }`}
       >
         {/* Left: Logo */}
@@ -85,9 +84,9 @@ export default function Navbar() {
             aria-label="Toggle dark mode"
           >
             {darkMode ? (
-              <SunIcon className="w-6 h-6" />
+              <SunIcon className="w-8 h-8" />
             ) : (
-              <MoonIcon className="w-6 h-6" />
+              <MoonIcon className="w-8 h-8" />
             )}
           </button>
 
