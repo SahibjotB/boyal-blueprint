@@ -50,7 +50,7 @@ export default function Navbar() {
             <img
               src={darkMode ? darklogo : logo}
               alt="Logo"
-              className="w-32 sm:w-36 h-auto hover:scale-110 transition-transform"
+              className="w-32 sm:w-36 h-auto hover:scale-110 transition-all "
             />
           </NavLink>
         </div>
@@ -67,7 +67,7 @@ export default function Navbar() {
               <NavLink
                 to={to}
                 className={({ isActive }) =>
-                  `${isActive ? "text-orange-500" : "hover:text-orange-500 transition-colors"} whitespace-nowrap`
+                  `${isActive ? "text-orange-500" : "hover:text-orange-500"} whitespace-nowrap`
                 }
               >
                 {label}
@@ -81,7 +81,7 @@ export default function Navbar() {
           {/* Dark Mode Toggle */}
           <button
             onClick={() => setDarkMode((prev) => !prev)}
-            className="p-2 rounded-full bg-black text-white dark:text-black dark:bg-white hover:invert transition-colors"
+            className="p-2 rounded-full bg-black text-white dark:text-black dark:bg-white hover:invert "
             aria-label="Toggle dark mode"
           >
             {darkMode ? (
