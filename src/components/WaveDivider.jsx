@@ -7,7 +7,7 @@ export default function WaveDivider() {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
           preserveAspectRatio="none"
-          className="w-[50%] h-full"
+          className="w-[50%] h-full -mb-[2px]" // 👈 overlaps bottom edge
         >
           <path
             className="fill-black dark:fill-white"
@@ -19,7 +19,7 @@ export default function WaveDivider() {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
           preserveAspectRatio="none"
-          className="w-[50%] h-full"
+          className="w-[50%] h-full -mb-[2px]" // 👈 overlaps bottom edge
         >
           <path
             className="fill-black dark:fill-white"
@@ -27,6 +27,8 @@ export default function WaveDivider() {
           />
         </svg>
       </div>
+      {/* 👇 Add solid background filler so no line ever shows */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-black dark:bg-white" />
     </div>
   );
 }
