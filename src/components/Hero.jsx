@@ -4,10 +4,10 @@ import WaveDivider from "./WaveDivider";
 export default function Hero() {
   return (
     <section className="relative w-full min-h-screen flex flex-col justify-center pb-40 items-center text-center px-4 sm:px-8 overflow-hidden">
-      <h1 className="text-4xl sm:text-4xl md:text-5xl text-gray-900 dark:text-white font-display font-medium">
+      <h1 className="text-4xl sm:text-3xl md:text-5xl text-gray-900 dark:text-white font-display font-medium">
         Welcome to
       </h1>
-      <h2 className="text-5xl sm:text-5xl md:text-6xl font-bold text-orange-500 font-display mt-2">
+      <h2 className="text-5xl sm:text-4xl md:text-6xl font-bold text-orange-500 font-display mt-2">
         Boyal Blueprint
       </h2>
       <p className="text-base sm:text-lg text-neutral-800 dark:text-neutral-50 mt-4 max-w-2xl">
