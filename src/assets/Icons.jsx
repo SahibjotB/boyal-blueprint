@@ -54,8 +54,8 @@ export const CalendarIcon = ({ className = "" }) => (
   </svg>
 );
 
-// Book Icon (outline)
-export const BookIcon = ({ className = "" }) => (
+// Lightbulb Icon 
+export const LightbulbIcon = ({ className = "" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -64,12 +64,40 @@ export const BookIcon = ({ className = "" }) => (
     strokeWidth="1.5"
     className={className}
   >
+    {/* Bulb Base */}
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
-      d="M12 6.253v13.5m0-13.5C10.832 5.5 9.25 5 7.5 5S4.168 5.5 3 6.253v13.5C4.168 18.5 5.75 18 7.5 18s3.332.5 4.5 1.253m0-13.5C13.168 5.5 14.75 5 16.5 5s3.332.5 4.5 1.253v13.5C19.832 18.5 18.25 18 16.5 18s-3.332.5-4.5 1.253"
+      d="M9 18h6v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+    />
+
+    {/* Bulb Glass */}
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M12 2a7 7 0 00-4.95 11.95c.63.63.95 1.51.95 2.41V18h8v-1.64c0-.9.32-1.78.95-2.41A7 7 0 0012 2z"
     />
   </svg>
 );
+// Globe Icon
+export const GlobeIcon = ({ className = "" }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    className={className}
+  >
+    <circle cx="12" cy="12" r="10" />
+    <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" />
+  </svg>
+);
+
+
+
+
+
+
 
 
