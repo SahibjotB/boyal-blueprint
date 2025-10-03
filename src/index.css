@@ -18,6 +18,7 @@ html {
 }
 
 .animate-wave {
-  animation: wave 10s linear infinite;
+  animation: wave-scroll 10s linear infinite;
+  will-change: transform;       /* prevent flicker */
+  backface-visibility: hidden;  /* force GPU layer */
 }
-
