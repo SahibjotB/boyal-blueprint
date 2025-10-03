@@ -1,7 +1,7 @@
 export default function WaveDivider() {
   return (
-    <div id='wave' className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none pointer-events-none">
-      <div className="relative flex w-[200%] h-[400px] sm:h-[400px] md:h-[480px] animate-wave">
+    <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none pointer-events-none">
+      <div id='wavetop' className="relative flex w-[450%] sm:w-[400%] md:w-[250%] h-[500px] sm:h-[400px] md:h-[420px] animate-wave scroll-mt-72">
         {/* Wave #1 */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,7 @@ export default function WaveDivider() {
         </svg>
       </div>
       {/* 👇 Add solid background filler so no line ever shows */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-black dark:bg-white" />
+      <div id='wavebottom' className="absolute bottom-0 left-0 right-0 h-1 bg-black dark:bg-white" />
     </div>
   );
 }

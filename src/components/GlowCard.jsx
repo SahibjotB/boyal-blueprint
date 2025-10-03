@@ -18,7 +18,8 @@ export default function GlowCard({ to, title, desc, Icon, mousePos }) {
 
     // reasonable threshold (closer than before but not too small)
     if (dist < 60) {
-      glow = `radial-gradient(300px circle at ${
+      glow = `radial-gradient(300px circle at 
+      ${
         mousePos.x - rect.left
       }px ${mousePos.y - rect.top}px, rgba(255,128,0,1), transparent 40%)`;
     }
@@ -53,17 +54,17 @@ export default function GlowCard({ to, title, desc, Icon, mousePos }) {
 
       {/* Content */}
       <div className="relative z-10">
-        <div className="w-16 h-16 mx-auto mb-5 rounded-xl flex items-center justify-center">
+        <div className="w-10 h-10 md:w-16 md:h-16 mx-auto mb-5 rounded-xl flex items-center justify-center">
           <Icon className="w-12 h-12 text-white dark:text-black group-hover:text-black dark:group-hover:text-white transition-colors" />
         </div>
 
-        <h3 className="text-lg sm:text-xl font-semibold 
+        <h3 className="text-base md:text-lg sm:text-xl font-semibold 
                       text-white dark:text-gray-900 
                       group-hover:text-black dark:group-hover:text-white transition-colors">
           {title}
         </h3>
 
-        <p className="mt-2 text-sm sm:text-base 
+        <p className="mt-2 text-xs md:text-sm sm:text-base 
                       text-gray-300 dark:text-gray-600 
                       group-hover:text-black dark:group-hover:text-white transition-colors">
           {desc}
