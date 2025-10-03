@@ -40,7 +40,7 @@ export default function Services() {
         {services.map((service) => (
           <GlowCard key={service.title} {...service} mousePos={mousePos} />
         ))}
-      
+
       </div>
     </section>
   );

@@ -3,7 +3,7 @@ import WaveDivider from "./WaveDivider";
 
 export default function Hero() {
   return (
-    <section id='hero' className="relative w-full min-h-screen flex flex-col justify-center pb-32 items-center text-center px-4 sm:px-8 overflow-hidden">
+    <section id='hero' className="relative w-full min-h-screen flex flex-col justify-start pt-40 items-center text-center px-4 sm:px-8 overflow-hidden">
       <h1 className="text-4xl sm:text-3xl md:text-5xl text-gray-900 dark:text-white font-display font-medium">
         Welcome to
       </h1>
@@ -13,7 +13,7 @@ export default function Hero() {
       <p className="text-base sm:text-lg text-neutral-800 dark:text-neutral-50 mt-4 max-w-2xl">
         A Clear Path to Homeownership
       </p>
-      <div className="mt-8 pb-40">
+      <div className="mt-8">
         <a
           href="#wave"
           className="bg-orange-500 text-white px-8 py-3 rounded-md font-semibold hover:bg-orange-600 transition"
@@ -23,7 +23,7 @@ export default function Hero() {
       </div>
 
       {/* 🔹 Waves stay inside hero */}
-      <div id='wave' className="absolute bottom-0 left-0 right-0">
+      <div className="absolute bottom-0 left-0 right-0">
         <WaveDivider />
       </div>
     </section>
