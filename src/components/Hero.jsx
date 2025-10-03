@@ -15,7 +15,7 @@ export default function Hero() {
       </p>
       <div className="mt-8 pb-40">
         <a
-          href="#services"
+          href="#wave"
           className="bg-orange-500 text-white px-8 py-3 rounded-md font-semibold hover:bg-orange-600 transition"
         >
           Get Started
@@ -23,7 +23,7 @@ export default function Hero() {
       </div>
 
       {/* 🔹 Waves stay inside hero */}
-      <div className="absolute bottom-0 left-0 right-0">
+      <div id='wave' className="absolute bottom-0 left-0 right-0">
         <WaveDivider />
       </div>
     </section>
