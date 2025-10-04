@@ -46,13 +46,13 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-4 left-0 right-0 z-50 flex justify-center transition-all duration-500 bg-white dark:bg-black`}
+      className={`fixed top-4 left-0 right-0 z-50 flex justify-center transition-all duration-500 bg-transparent`}
     >
       <nav
         className={`relative flex items-center justify-between h-20 transition-all duration-500 px-6 sm:px-16
           ${
             scrolled
-              ? "backdrop-blur-md bg-white/90 dark:bg-black/90 border border-gray-200 dark:border-neutral-800 rounded-xl shadow-md w-[98%] md:w-[80%]"
+              ? "backdrop-blur-md bg-white/70 dark:bg-black/70 border border-gray-200 dark:border-neutral-800 rounded-xl shadow-md w-[80%]"
               : "bg-transparent border border-transparent w-full"
           }`}
       >
