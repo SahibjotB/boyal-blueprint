@@ -1,7 +1,7 @@
 export default function WaveDivider() {
   return (
     <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none pointer-events-none">
-      <div className="relative w-[200%] h-[420px] animate-wave flex">
+      <div className="relative w-[200%] h-[520px] sm:h-[420px] animate-wave flex">
         {/* Continuous flowing wave - two paths side by side */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
