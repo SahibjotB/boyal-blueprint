@@ -46,7 +46,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-4 left-0 right-0 z-50 flex justify-center transition-all duration-500`}
+      className={`fixed top-4 left-0 right-0 z-50 flex justify-center transition-all duration-500 bg-white dark:bg-black`}
     >
       <nav
         className={`relative flex items-center justify-between h-20 transition-all duration-500 px-6 sm:px-16
@@ -124,7 +124,7 @@ export default function Navbar() {
           menuOpen ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0 pointer-events-none"
         }`}
       >
-        <div className="min-w-[20vh] max-w-sm justify-center backdrop-blur-md bg-white/90 dark:bg-black/90 text-black dark:text-white p-6 shadow-lg rounded-2xl grid grid-cols-1 gap-1">
+        <div className="min-w-[20vh] max-w-sm justify-center backdrop-blur-md bg-white/90 dark:bg-black/90 text-black dark:text-white p-6 shadow-lg rounded-2xl transition-colors duration-500">
           {[
             { to: "/calculator", label: "Calculator" },
             { to: "/book", label: "Book a Call" },
@@ -134,7 +134,7 @@ export default function Navbar() {
             <NavLink
               key={to}
               to={to}
-              className="flex flex-col w-full px-1 text-center rounded-md text-black dark:text-white font-semibold"
+              className="flex flex-col w-full px-1 text-center rounded-md text-black dark:text-white hover:text-orange-500 font-semibold"
               onClick={() => setMenuOpen(false)}
             >
               {label}
