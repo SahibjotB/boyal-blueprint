@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import MapGL, { Marker } from "react-map-gl/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 
-const MapComponent = () => {
+const MapComponent = ({ onHeightChange }) => {
   const mapRef = useRef(null);
   const [isDarkMode, setIsDarkMode] = useState(
     document.documentElement.classList.contains("dark")
@@ -23,11 +23,15 @@ const MapComponent = () => {
   }, []);
 
   useEffect(() => {
-    // Ensure map resizes properly when viewport changes (especially on mobile)
+    // Notify parent of map height (for drawer sync)
+    const mapHeight = window.innerWidth < 768 ? 600 : 450; // taller map on mobile
+    if (onHeightChange) onHeightChange(mapHeight);
+  }, [onHeightChange]);
+
+  useEffect(() => {
+    // Ensure map resizes properly when viewport changes
     const handleResize = () => {
-      if (mapRef.current) {
-        mapRef.current.resize();
-      }
+      if (mapRef.current) mapRef.current.resize();
     };
 
     window.addEventListener("resize", handleResize);
@@ -40,7 +44,7 @@ const MapComponent = () => {
   }, []);
 
   return (
-    <div className="w-full h-[400px] sm:h-[500px] rounded-2xl overflow-hidden shadow-lg transition-all duration-500">
+    <div className="w-full h-[600px] sm:h-[450px] rounded-2xl overflow-hidden shadow-lg transition-all duration-500">
       <MapGL
         ref={mapRef}
         initialViewState={{
@@ -50,7 +54,7 @@ const MapComponent = () => {
         }}
         mapStyle={
           isDarkMode
-            ? "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json" // white (for dark mode)
+            ? "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json" // light (for dark mode)
             : "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json" // dark (for light mode)
         }
         style={{ width: "100%", height: "100%" }}

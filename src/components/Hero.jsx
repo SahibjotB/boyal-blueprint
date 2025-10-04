@@ -15,11 +15,19 @@ export default function Hero() {
       </p>
       <div className="mt-8">
         <a
-          href="#services-anchor"
-          className="bg-orange-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-black dark:hover:text-black dark:hover:bg-white transition"
+          href="#services"
+          onClick={(e) => {
+            e.preventDefault();
+            const section = document.querySelector("#services");
+            if (section) {
+              section.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+          }}
+          className="bg-orange-500 text-white px-8 py-3 rounded-md font-semibold hover:bg-orange-600 transition"
         >
           Get Started
         </a>
+
       </div>
 
       {/* 🔹 Waves stay inside hero */}

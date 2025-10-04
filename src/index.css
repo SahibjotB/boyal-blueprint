@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@media (max-width: 640px) {
+  .mapboxgl-map {
+    margin-bottom: -3px !important;
+  }
+  
 html {
   scroll-behavior: smooth;
 }
@@ -29,6 +35,8 @@ svg {
 }
 
 
+
+}
 
 
 
