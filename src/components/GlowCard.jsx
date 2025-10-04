@@ -41,14 +41,14 @@ export default function GlowCard({ to, title, desc, Icon, mousePos }) {
         style={{
           background:
             glow ||
-            "radial-gradient(350px circle at 50% 50%, rgba(255,128,0,1), transparent 95%)",
+            "radial-gradient(350px circle at 100% 100%, rgba(242, 83, 29, 1), transparent 100%)",
           padding: "2px",
           WebkitMask:
             "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
           WebkitMaskComposite: "xor",
           maskComposite: "exclude",
-          transition: "background 0.25s ease-out",
-          filter: "brightness(1.5) blur(4px)",
+          transition: "background 6s ease-out",
+          filter: "brightness(4) blur(4px)",
         }}
       />
 

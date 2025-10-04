@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CalculatorIcon, CalendarIcon, LightbulbIcon } from "../assets/Icons.jsx";
 import GlowCard from "./GlowCard";
+import RealEstateMap from "./Map.jsx"; 
 
 const services = [
   {
@@ -28,7 +29,6 @@ export default function Services() {
 
   return (
     <>
-      {/* 🔹 Scroll anchor for navbar offset */}
       <div id="services-anchor" className="h-0 scroll-mt-20" />
 
       <section
@@ -40,6 +40,10 @@ export default function Services() {
           Our Services
         </h2>
 
+        {/* 🗺️ Map Section */}
+        <RealEstateMap />
+
+        {/* 🔸 Service Cards */}
         <div className="w-[90%] md:w-full max-w-6xl grid grid-cols-1 gap-6 md:gap-10 sm:grid-cols-2 md:grid-cols-3">
           {services.map((service) => (
             <GlowCard key={service.title} {...service} mousePos={mousePos} />
