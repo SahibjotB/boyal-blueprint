@@ -18,7 +18,7 @@ html {
 }
 
 .animate-wave {
-  animation: wave-scroll 12s linear infinite;
+  animation: wave-scroll 6s linear infinite;
   will-change: transform;
   backface-visibility: hidden;
   transform: translateZ(0);

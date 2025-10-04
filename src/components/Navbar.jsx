@@ -124,7 +124,7 @@ export default function Navbar() {
           menuOpen ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0 pointer-events-none"
         }`}
       >
-        <div className="min-w-[20vh] max-w-sm justify-center bg-white dark:bg-black text-black dark:text-white p-6 shadow-lg rounded-2xl border border-gray-200 dark:border-neutral-800">
+        <div className="min-w-[20vh] max-w-sm justify-center backdrop-blur-md bg-white/90 dark:bg-black/90 text-black dark:text-white p-6 shadow-lg rounded-2xl grid grid-cols-1 gap-1">
           {[
             { to: "/calculator", label: "Calculator" },
             { to: "/book", label: "Book a Call" },
@@ -134,7 +134,7 @@ export default function Navbar() {
             <NavLink
               key={to}
               to={to}
-              className="flex flex-col w-full mb-3 px-4 py-2 text-center rounded-md bg-orange-500 text-white hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white transition duration-200 font-semibold"
+              className="flex flex-col w-full px-1 text-center rounded-md text-black dark:text-white font-semibold"
               onClick={() => setMenuOpen(false)}
             >
               {label}
