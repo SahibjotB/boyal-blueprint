@@ -35,7 +35,6 @@ try {
   console.warn("⚠️ Could not read listings cache:", err.message);
 }
 
-// ===== HELPERS =====
 function saveFile(file, data) {
   try {
     fs.writeFileSync(file, JSON.stringify(data, null, 2), "utf-8");
@@ -44,7 +43,6 @@ function saveFile(file, data) {
   }
 }
 
-// ===== FETCH MLS DATA (no geocoding) =====
 async function fetchAmpreListings(limit = 10000 , pages = 1000) {
   const baseUrl = process.env.AMPRE_IDX_BASE_URL;
   const token = process.env.AMPRE_VOW_TOKEN || process.env.AMPRE_IDX_TOKEN;
@@ -83,7 +81,6 @@ async function fetchAmpreListings(limit = 10000 , pages = 1000) {
   return all;
 }
 
-// ===== ROUTES =====
 app.get("/api/listings", async (req, res) => {
   try {
     if (!cachedListings.length) {
@@ -112,13 +109,11 @@ app.get("/api/listings", async (req, res) => {
   }
 });
 
-// Manually refresh the cache
 app.post("/api/refresh", async (req, res) => {
   cachedListings = await fetchAmpreListings();
   res.json({ refreshed: cachedListings.length });
 });
 
-// ===== AI SEARCH (unchanged) =====
 app.post("/api/ai-search", async (req, res) => {
   const { query, listings } = req.body;
   if (!query || !listings) {
@@ -126,18 +121,14 @@ app.post("/api/ai-search", async (req, res) => {
   }
 
   try {
-    const prompt = `
-You are an intelligent real estate assistant.
-
+    const prompt = `You are an intelligent real estate assistant.
 User request: "${query}"
-
 You have access to the following MLS listings (JSON):
 ${JSON.stringify(listings.slice(0, 50))}
 
 Filter and return only listings (as a JSON array) that match the user's request.
 Respond ONLY with valid JSON, no extra text.
-Each result must include: ListingKey, UnparsedAddress, City, ListPrice, BedroomsTotal, BathroomsTotalInteger.
-`;
+Each result must include: ListingKey, UnparsedAddress, City, ListPrice, BedroomsTotal, BathroomsTotalInteger.`;
 
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
@@ -161,7 +152,83 @@ Each result must include: ListingKey, UnparsedAddress, City, ListPrice, Bedrooms
   }
 });
 
-// ===== STARTUP =====
+app.post("/api/search-mls", async (req, res) => {
+  const token = process.env.AMPRE_IDX_TOKEN;
+  if (!token) {
+    return res.status(500).json({ error: "Missing AMPRE IDX token in environment" });
+  }
+
+  const {
+    city,
+    minPrice,
+    maxPrice,
+    bedroomsMin,
+    bathroomsMin,
+    propertyType,
+    keywords,
+    limit = 50,
+    sort = "priceAsc"
+  } = req.body;
+
+  const filters = [];
+
+  if (city) filters.push(`City eq '${city}'`);
+  if (minPrice) filters.push(`ListPrice ge ${minPrice}`);
+  if (maxPrice) filters.push(`ListPrice le ${maxPrice}`);
+  if (bedroomsMin) filters.push(`BedroomsTotal ge ${bedroomsMin}`);
+  if (bathroomsMin) filters.push(`BathroomsTotalInteger ge ${bathroomsMin}`);
+  if (keywords) filters.push(`contains(tolower(PublicRemarks), tolower('${keywords}'))`);
+
+  filters.push(`StandardStatus eq Odata.Models.StandardStatus'Active'`);
+
+  const filterString = filters.join(" and ");
+
+  let orderby = "ListPrice asc";
+  if (sort === "priceDesc") orderby = "ListPrice desc";
+  else if (sort === "newest") orderby = "ModificationTimestamp desc";
+  else if (sort === "oldest") orderby = "ModificationTimestamp asc";
+
+  const queryParams = new URLSearchParams({
+    $filter: filterString,
+    $select: [
+      "ListingKey",
+      "UnparsedAddress",
+      "City",
+      "PostalCode",
+      "ListPrice",
+      "BedroomsTotal",
+      "BathroomsTotalInteger",
+      "PropertyType",
+      "StandardStatus",
+      "PublicRemarks",
+      "Latitude",
+      "Longitude"
+    ].join(","),
+    $orderby: orderby,
+    $top: limit.toString(),
+    $expand: "Media"
+  });
+
+  const url = `https://query.ampre.ca/odata/Property?${queryParams}`;
+
+  try {
+    const mlsRes = await fetch(url, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+
+    if (!mlsRes.ok) {
+      const text = await mlsRes.text();
+      return res.status(mlsRes.status).json({ error: `MLS error: ${text}` });
+    }
+
+    const data = await mlsRes.json();
+    res.status(200).json({ results: data.value });
+  } catch (err) {
+    console.error("❌ MLS API call failed", err.message);
+    res.status(500).json({ error: "MLS API request failed" });
+  }
+});
+
 app.listen(PORT, async () => {
   console.log(`✅ Server running at http://localhost:${PORT}`);
   if (!cachedListings.length) {

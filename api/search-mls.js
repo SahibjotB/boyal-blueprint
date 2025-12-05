@@ -1,10 +1,14 @@
-// pages/api/search-mls.js
+// server/routes/search-mls.js (or similar Express route file)
 
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method Not Allowed" });
-  }
+import express from "express";
+import fetch from "node-fetch";
+import dotenv from "dotenv";
 
+dotenv.config();
+
+const router = express.Router();
+
+router.post("/search-mls", async (req, res) => {
   const token = process.env.AMPRE_IDX_TOKEN;
   if (!token) {
     return res.status(500).json({ error: "Missing AMPRE IDX token in environment" });
@@ -19,10 +23,9 @@ export default async function handler(req, res) {
     propertyType,
     keywords,
     limit = 50,
-    sort = "priceAsc"
+    sort = "priceAsc",
   } = req.body;
 
-  // Construct $filter query string
   const filters = [];
 
   if (city) filters.push(`City eq '${city}'`);
@@ -34,12 +37,9 @@ export default async function handler(req, res) {
     filters.push(`contains(tolower(PublicRemarks), tolower('${keywords}'))`);
   }
 
-  // Always get active listings
   filters.push(`StandardStatus eq Odata.Models.StandardStatus'Active'`);
-
   const filterString = filters.join(" and ");
 
-  // Build $orderby
   let orderby = "ListPrice asc";
   if (sort === "priceDesc") orderby = "ListPrice desc";
   else if (sort === "newest") orderby = "ModificationTimestamp desc";
@@ -59,11 +59,11 @@ export default async function handler(req, res) {
       "StandardStatus",
       "PublicRemarks",
       "Latitude",
-      "Longitude"
+      "Longitude",
     ].join(","),
     $orderby: orderby,
     $top: limit.toString(),
-    $expand: "Media"
+    $expand: "Media",
   });
 
   const url = `https://query.ampre.ca/odata/Property?${queryParams}`;
@@ -71,8 +71,8 @@ export default async function handler(req, res) {
   try {
     const mlsRes = await fetch(url, {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     if (!mlsRes.ok) {
@@ -82,9 +82,10 @@ export default async function handler(req, res) {
 
     const data = await mlsRes.json();
     res.status(200).json({ results: data.value });
-
   } catch (err) {
     console.error("MLS API call failed", err);
     res.status(500).json({ error: "MLS API request failed" });
   }
-}
+});
+
+export default router;
